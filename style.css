@@ -312,7 +312,7 @@ main {
   position: relative;
   padding-block: clamp(4rem, 8vw, 6.8rem);
   isolation: isolate;
-  --corner-size: clamp(136px, 13.6vw, 214px);
+  --corner-size: clamp(280px, 28vw, 460px);
   --corner-side: clamp(-18px, -0.6vw, -6px);
   --corner-top: clamp(16px, 2.1vw, 30px);
   --corner-bottom: clamp(16px, 2.1vw, 30px);
@@ -324,12 +324,12 @@ main {
   position: absolute;
   left: 0;
   right: 0;
-  height: calc(var(--corner-size) + 64px);
+  height: calc(var(--corner-size) + 130px);
   pointer-events: none;
   z-index: 0;
   background-repeat: no-repeat;
   background-size: var(--corner-size) var(--corner-size), var(--corner-size) var(--corner-size);
-  opacity: 0.3;
+  opacity: 0.08;
   filter: saturate(0.88) contrast(0.94);
 }
 
@@ -980,7 +980,7 @@ main {
 
 @media (max-width: 760px) {
   .section {
-    --corner-size: clamp(94px, 28vw, 136px);
+    --corner-size: clamp(190px, 52vw, 300px);
     --corner-side: -9px;
     --corner-top: 12px;
     --corner-bottom: 12px;
@@ -988,7 +988,7 @@ main {
 
   .section::before,
   .section::after {
-    opacity: 0.2;
+    opacity: 0.06;
   }
 
   .identity-copy::before {
