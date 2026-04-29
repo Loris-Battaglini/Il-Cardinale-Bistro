@@ -8,6 +8,8 @@
   <link rel="icon" type="image/jpeg" href="assets/favicon/474930305_541932845529448_6785295174995164938_n.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -18,22 +20,22 @@
         <span class="brand-mark">Il Cardinale</span>
         <span class="brand-sub">Bistro - Viterbo</span>
       </a>
-      <a class="btn btn-small" href="tel:+393401197999">Prenota un Tavolo</a>
+      <a class="btn btn-small" href="https://wa.me/393401197999" target="_blank" rel="noopener noreferrer">Prenota un Tavolo</a>
     </div>
   </header>
 
   <main>
     <section class="hero" id="home">
       <div class="hero-media" aria-hidden="true">
-        <img src="assets/img/ilcardinale.bistro_1717247230_3380837266308315597_66423693786.jpg" alt="">
+        <img src="assets/img/upscalemedia-transformed.jpeg" alt="">
       </div>
       <div class="container reveal">
         <span class="eyebrow">Trattoria del 1200 - Centro Storico di Viterbo</span>
         <h1>Un viaggio nel gusto, nel cuore del 1200.</h1>
         <p class="lead">La tradizione viterbese incontra l'incanto di un quartiere medievale unico: archi in pietra, luci soffuse e una cucina autentica da vivere con calma.</p>
         <div class="hero-actions">
-          <a class="btn" href="tel:+393401197999">Prenota un tavolo</a>
-          <a class="btn btn-ghost" href="#contatti">Richiedi informazioni</a>
+          <a class="btn" href="https://wa.me/393401197999" target="_blank" rel="noopener noreferrer">Prenota un tavolo</a>
+          <a class="btn btn-ghost" href="tel:+393401197999">Chiamaci</a>
         </div>
       </div>
       <a class="scroll-cue" href="#tre-anime">Scorri</a>
@@ -117,28 +119,41 @@
           <div class="proof-item reveal" style="--delay: 0.13s;">Servizio cordiale e attento</div>
         </div>
 
-        <div class="gallery-grid">
-          <figure class="gallery-card tall reveal" style="--delay: 0.03s;">
-            <img src="assets/img/ilcardinale.bistro_1717266522_3380999101305211961_66423693786.jpg" alt="Richiastro interno con aperitivo">
-          </figure>
-          <figure class="gallery-card reveal" style="--delay: 0.06s;">
-            <img src="assets/img/ilcardinale.bistro_1717266522_3380999101053484005_66423693786.jpg" alt="Tagliere di salumi selezionati">
-          </figure>
-          <figure class="gallery-card reveal" style="--delay: 0.09s;">
-            <img src="assets/img/ilcardinale.bistro_1716147724_3371613941544932533_66423693786.jpg" alt="Piatto di pasta alla carbonara">
-          </figure>
-          <figure class="gallery-card wide reveal" style="--delay: 0.12s;">
-            <img src="assets/img/ilcardinale.bistro_1715975141_3370166208732618421_66423693786.jpg" alt="Cena in sala con atmosfera conviviale">
-          </figure>
-          <figure class="gallery-card reveal" style="--delay: 0.15s;">
-            <img src="assets/img/ilcardinale.bistro_1716147724_3371613941570145532_66423693786.jpg" alt="Zuppa della tradizione laziale">
-          </figure>
-          <figure class="gallery-card reveal" style="--delay: 0.18s;">
-            <img src="assets/img/ilcardinale.bistro_1774711683_3862883292126826644_66423693786.jpg" alt="Lasagna gratinata della casa">
-          </figure>
-          <figure class="gallery-card reveal" style="--delay: 0.21s;">
-            <img src="assets/img/ilcardinale.bistro_1717266522_3380999101062009057_66423693786.jpg" alt="Spritz e specialita per aperitivo">
-          </figure>
+        <div class="gallery-carousel">
+          <div class="carousel-track">
+            <figure class="carousel-slide">
+              <img src="assets/img/ilcardinale.bistro_1717266522_3380999101305211961_66423693786.jpg" alt="Richiastro interno con aperitivo">
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/img/ilcardinale.bistro_1717266522_3380999101053484005_66423693786.jpg" alt="Tagliere di salumi selezionati">
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/img/ilcardinale.bistro_1716147724_3371613941544932533_66423693786.jpg" alt="Piatto di pasta alla carbonara">
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/img/ilcardinale.bistro_1715975141_3370166208732618421_66423693786.jpg" alt="Cena in sala con atmosfera conviviale">
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/img/ilcardinale.bistro_1716147724_3371613941570145532_66423693786.jpg" alt="Zuppa della tradizione laziale">
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/img/ilcardinale.bistro_1774711683_3862883292126826644_66423693786.jpg" alt="Lasagna gratinata della casa">
+            </figure>
+            <figure class="carousel-slide">
+              <img src="assets/img/ilcardinale.bistro_1717266522_3380999101062009057_66423693786.jpg" alt="Spritz e specialita per aperitivo">
+            </figure>
+          </div>
+          <button class="carousel-nav carousel-prev" aria-label="Immagine precedente">&lsaquo;</button>
+          <button class="carousel-nav carousel-next" aria-label="Immagine successiva">&rsaquo;</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" aria-label="Vai a immagine 1"></button>
+            <button class="carousel-dot" aria-label="Vai a immagine 2"></button>
+            <button class="carousel-dot" aria-label="Vai a immagine 3"></button>
+            <button class="carousel-dot" aria-label="Vai a immagine 4"></button>
+            <button class="carousel-dot" aria-label="Vai a immagine 5"></button>
+            <button class="carousel-dot" aria-label="Vai a immagine 6"></button>
+            <button class="carousel-dot" aria-label="Vai a immagine 7"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -181,13 +196,13 @@
         </table>
       </article>
 
-      <article class="foot-card reveal" style="--delay: 0.14s;">
+      <article class="foot-card reveal" style="--delay: 0.04s;">
         <h3>Mappa</h3>
         <p>Nel cuore del quartiere medievale di Viterbo, a pochi passi dai principali percorsi storici.</p>
-        <div class="map-wrap">
-          <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=42.41519,12.103902&z=18&output=embed" title="Mappa Il Cardinale Bistro"></iframe>
+        <div class="map-wrap is-loading">
+          <iframe loading="eager" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Il+Cardinale+Bistro,+Via+Cardinal+Pietro+La+Fontaine+12,+Viterbo&ll=42.4151874,12.1039006&z=18&output=embed" title="Mappa Il Cardinale Bistro"></iframe>
         </div>
-        <a class="link-map" href="https://maps.google.com/?q=42.41519,12.103902" target="_blank" rel="noopener noreferrer">Apri su Google Maps</a>
+        <a class="link-map" href="https://www.google.com/maps/place/Il+Cardinale+Bistro/@42.4151874,12.1039006,17z/data=!3m1!4b1!4m6!3m5!1s0x132f2d273a12e687:0x2ba3c12d8fc3b943!8m2!3d42.4151874!4d12.1039006!16s%2Fg%2F11y547dy2d?authuser=0&hl=it&entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Apri su Google Maps</a>
       </article>
     </div>
 
@@ -214,6 +229,129 @@
 
     reveals.forEach((item) => observer.observe(item));
   </script>
+
+  <script>
+    // Carousel functionality
+    const carousel = document.querySelector('.gallery-carousel');
+    if (carousel) {
+      const track = carousel.querySelector('.carousel-track');
+      const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+      const prevBtn = carousel.querySelector('.carousel-prev');
+      const nextBtn = carousel.querySelector('.carousel-next');
+      const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+      
+      let currentIndex = 0;
+      let isTransitioning = false;
+      const totalSlides = slides.length;
+      const loopEnabled = totalSlides > 1;
+
+      if (!track || totalSlides === 0 || !prevBtn || !nextBtn) {
+        console.warn('Carosello non inizializzato: elementi mancanti.');
+      } else {
+        if (loopEnabled) {
+          const firstClone = slides[0].cloneNode(true);
+          firstClone.setAttribute('aria-hidden', 'true');
+          track.appendChild(firstClone);
+        }
+
+        const allSlides = Array.from(track.querySelectorAll('.carousel-slide'));
+        const visualSlidesCount = allSlides.length;
+        const stepPercent = 100 / visualSlidesCount;
+
+        track.style.width = `${visualSlidesCount * 100}%`;
+        allSlides.forEach((slide) => {
+          slide.style.flex = `0 0 ${stepPercent}%`;
+          slide.style.maxWidth = `${stepPercent}%`;
+        });
+
+        const setTransition = (enabled) => {
+          track.style.transition = enabled
+            ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+            : 'none';
+        };
+      
+        function updateDots(activeIndex) {
+          dots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === activeIndex);
+          });
+        }
+
+        function updateCarousel() {
+          track.style.transform = `translateX(-${currentIndex * stepPercent}%)`;
+          updateDots(currentIndex >= totalSlides ? 0 : currentIndex);
+        }
+      
+        function goToSlide(index) {
+          if (isTransitioning) {
+            return;
+          }
+          isTransitioning = true;
+          currentIndex = index;
+          setTransition(true);
+          updateCarousel();
+        }
+      
+        prevBtn.addEventListener('click', () => {
+          if (loopEnabled) {
+            goToSlide(currentIndex === 0 ? totalSlides - 1 : currentIndex - 1);
+          } else {
+            goToSlide((currentIndex - 1 + totalSlides) % totalSlides);
+          }
+        });
+
+        nextBtn.addEventListener('click', () => {
+          if (loopEnabled) {
+            goToSlide(currentIndex + 1);
+          } else {
+            goToSlide((currentIndex + 1) % totalSlides);
+          }
+        });
+      
+        dots.forEach((dot, idx) => {
+          dot.addEventListener('click', () => goToSlide(idx));
+        });
+
+        track.addEventListener('transitionend', () => {
+          if (loopEnabled && currentIndex === totalSlides) {
+            setTransition(false);
+            currentIndex = 0;
+            updateCarousel();
+            track.offsetHeight;
+            setTransition(true);
+          }
+          isTransitioning = false;
+        });
+
+        updateCarousel();
+      
+        // Auto-rotate carousel every 5 seconds
+        setInterval(() => {
+          if (loopEnabled) {
+            goToSlide(currentIndex + 1);
+          } else {
+            goToSlide((currentIndex + 1) % totalSlides);
+          }
+        }, 5000);
+      }
+    }
+  </script>
+
+  <script>
+    const mapWraps = document.querySelectorAll('.map-wrap');
+    mapWraps.forEach((wrap) => {
+      const frame = wrap.querySelector('iframe');
+      if (!frame) return;
+      const markReady = () => {
+        wrap.classList.remove('is-loading');
+        wrap.classList.add('is-ready');
+      };
+      frame.addEventListener('load', markReady, { once: true });
+      setTimeout(markReady, 1800);
+    });
+  </script>
+
+  <a class="mobile-call-cta" href="tel:+393401197999" aria-label="Chiama Il Cardinale Bistro">Chiamaci</a>
 </body>
 </html>
+
 
