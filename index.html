@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Cardinale Bistro | Viterbo</title>
+  <meta name="description" content="Il Cardinale Bistro: trattoria d'eccellenza nel cuore medievale di Viterbo. Pranzo, aperitivo e cena tra storia, gusto e atmosfera.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #17120f;
+      --bg-soft: #241b15;
+      --surface: #f6efe5;
+      --surface-2: #ede2d2;
+      --text: #271e18;
+      --text-soft: #5a4a40;
+      --white: #fefbf7;
+      --gold: #c59a59;
+      --gold-soft: #e0c38d;
+      --line: #d8c7af;
+      --shadow: 0 20px 40px rgba(23, 18, 15, 0.25);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --container: min(1120px, 92vw);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(197, 154, 89, 0.16), transparent 35%),
+        radial-gradient(circle at 90% 100%, rgba(197, 154, 89, 0.09), transparent 30%),
+        var(--surface);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    section {
+      scroll-margin-top: 96px;
+    }
+
+    .container {
+      width: var(--container);
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 1rem 1rem auto;
+      z-index: 50;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(23, 18, 15, 0.6);
+      backdrop-filter: blur(12px);
+      transition: 0.3s ease;
+    }
+
+    .topbar.scrolled {
+      transform: translateY(-2px);
+      background: rgba(23, 18, 15, 0.78);
+      border-color: rgba(255, 255, 255, 0.32);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 0.45rem 0.55rem 0.45rem 1rem;
+    }
+
+    .brand {
+      display: grid;
+      gap: 0.05rem;
+      color: var(--white);
+    }
+
+    .brand-mark {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-sub {
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.82rem 1.45rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: linear-gradient(120deg, var(--gold), #b7833e);
+      color: #1d140f;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: 0 10px 24px rgba(158, 112, 51, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(158, 112, 51, 0.45);
+    }
+
+    .btn-small {
+      font-size: 0.8rem;
+      padding: 0.68rem 1rem;
+      white-space: nowrap;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.5);
+      color: var(--white);
+      box-shadow: none;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      color: var(--white);
+      padding: clamp(6.2rem, 8vw, 8.5rem) 0 4rem;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.03);
+      filter: contrast(1.02) saturate(0.92);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(to top, rgba(17, 13, 10, 0.92) 16%, rgba(17, 13, 10, 0.55) 52%, rgba(17, 13, 10, 0.48) 100%),
+        radial-gradient(circle at 18% 14%, rgba(197, 154, 89, 0.33), transparent 35%);
+    }
+
+    .eyebrow {
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.3rem, 6vw, 5.1rem);
+      line-height: 0.95;
+      max-width: 12ch;
+      text-wrap: balance;
+      margin-bottom: 1rem;
+    }
+
+    .hero .lead {
+      max-width: 57ch;
+      color: rgba(255, 251, 245, 0.9);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+
+    .hero-actions {
+      margin-top: 1.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      right: clamp(1.2rem, 3vw, 2rem);
+      bottom: 1.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      padding-right: 1rem;
+    }
+
+    .scroll-cue::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0.25rem;
+      width: 0.45rem;
+      height: 0.45rem;
+      border-right: 2px solid var(--gold-soft);
+      border-bottom: 2px solid var(--gold-soft);
+      transform: rotate(45deg);
+      animation: floatArrow 1.7s ease-in-out infinite;
+    }
+
+    @keyframes floatArrow {
+      0%, 100% { transform: translateY(0) rotate(45deg); }
+      50% { transform: translateY(4px) rotate(45deg); }
+    }
+
+    .section {
+      padding-block: clamp(4rem, 8vw, 6.8rem);
+    }
+
+    .section-head {
+      margin-bottom: 2rem;
+      max-width: 70ch;
+    }
+
+    .section-head h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+      color: #2e2219;
+    }
+
+    .section-head p {
+      color: var(--text-soft);
+      font-size: 1.02rem;
+    }
+
+    .souls-grid {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .soul-card {
+      position: relative;
+      border-radius: var(--radius);
+      min-height: 430px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .soul-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .soul-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 11, 8, 0.92) 8%, rgba(15, 11, 8, 0.25) 62%);
+      z-index: 1;
+    }
+
+    .soul-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .soul-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.4rem;
+      color: #f9f4ee;
+    }
+
+    .soul-content h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 3.4vw, 2.7rem);
+      line-height: 0.95;
+      margin-bottom: 0.7rem;
+    }
+
+    .soul-content p {
+      color: rgba(249, 244, 238, 0.92);
+      max-width: 32ch;
+      margin-bottom: 1.1rem;
+      font-size: 0.97rem;
+    }
+
+    .soul-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      font-weight: 700;
+    }
+
+    .identity {
+      background: linear-gradient(180deg, var(--surface) 0%, #efe2d2 100%);
+      border-block: 1px solid rgba(39, 30, 24, 0.07);
+    }
+
+    .identity-grid {
+      display: grid;
+      gap: 2.1rem;
+      align-items: center;
+    }
+
+    .identity-copy h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4.4vw, 3.3rem);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .identity-copy p + p {
+      margin-top: 0.9rem;
+    }
+
+    .identity-copy p {
+      color: var(--text-soft);
+      max-width: 58ch;
+    }
+
+    .identity-points {
+      margin-top: 1.4rem;
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      color: #3c2f25;
+    }
+
+    .identity-points li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.97rem;
+    }
+
+    .identity-points li::before {
+      content: "";
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: linear-gradient(140deg, var(--gold), #9e6f2f);
+      position: absolute;
+      left: 0;
+      top: 0.54rem;
+    }
+
+    .identity-media {
+      display: grid;
+      grid-template-columns: 1fr 0.82fr;
+      gap: 0.9rem;
+      align-items: end;
+    }
+
+    .identity-media figure {
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .identity-media img {
+      height: 100%;
+      min-height: 200px;
+      object-fit: cover;
+    }
+
+    .proof-grid {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .proof-item {
+      background: #fff8ee;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.66rem 1rem;
+      font-size: 0.88rem;
+      color: #4a3c31;
+      width: fit-content;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 180px;
+      box-shadow: 0 10px 22px rgba(23, 18, 15, 0.2);
+    }
+
+    .gallery-card img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-card.tall {
+      min-height: 310px;
+      grid-row: span 2;
+    }
+
+    .gallery-card.wide {
+      grid-column: span 2;
+      min-height: 230px;
+    }
+
+    .footer {
+      background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+      color: #f6ede3;
+      padding-top: clamp(3.6rem, 6vw, 5rem);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .foot-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      min-height: 100%;
+    }
+
+    .foot-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.65rem;
+      margin-bottom: 0.8rem;
+      color: #fff7eb;
+    }
+
+    .foot-card p,
+    .foot-card li,
+    .foot-card td,
+    .foot-card th {
+      color: rgba(246, 237, 227, 0.9);
+      font-size: 0.95rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .contact-list a {
+      color: #ffe2b4;
+    }
+
+    .hours {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.4rem;
+    }
+
+    .hours th,
+    .hours td {
+      text-align: left;
+      padding: 0.42rem 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.22);
+      font-weight: 500;
+    }
+
+    .map-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      min-height: 220px;
+      border: 0;
+      display: block;
+    }
+
+    .link-map {
+      margin-top: 0.8rem;
+      display: inline-block;
+      font-size: 0.83rem;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: #ffd8a0;
+      font-weight: 700;
+    }
+
+    .footer-bottom {
+      margin-top: 1.6rem;
+      padding: 1.2rem 0 1.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.17);
+      font-size: 0.81rem;
+      color: rgba(246, 237, 227, 0.75);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+      transition-delay: var(--delay, 0s);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 680px) {
+      .proof-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .proof-item {
+        width: auto;
+        text-align: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 900px) {
+      .topbar {
+        inset: 1.2rem auto auto 50%;
+        transform: translateX(-50%);
+        width: min(760px, calc(100vw - 2rem));
+      }
+
+      .topbar.scrolled {
+        transform: translateX(-50%) translateY(-2px);
+      }
+
+      .souls-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .identity-grid {
+        grid-template-columns: 1.1fr 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.9rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.1fr 1fr 1.05fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#home" aria-label="Il Cardinale Bistro Home">
+        <span class="brand-mark">Il Cardinale</span>
+        <span class="brand-sub">Bistro - Viterbo</span>
+      </a>
+      <a class="btn btn-small" href="tel:+393401197999">Prenota un Tavolo</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/img/ilcardinale.bistro_1717247230_3380837266308315597_66423693786.jpg" alt="">
+      </div>
+      <div class="container reveal">
+        <span class="eyebrow">Trattoria del 1200 - Centro Storico di Viterbo</span>
+        <h1>Un viaggio nel gusto, nel cuore del 1200.</h1>
+        <p class="lead">La tradizione viterbese incontra l'incanto di un quartiere medievale unico: archi in pietra, luci soffuse e una cucina autentica da vivere con calma.</p>
+        <div class="hero-actions">
+          <a class="btn" href="tel:+393401197999">Prenota un tavolo</a>
+          <a class="btn btn-ghost" href="#tre-anime">Scopri le tre anime</a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#tre-anime">Scorri</a>
+    </section>
+
+    <section class="section" id="tre-anime">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">The Three Souls</span>
+          <h2>Pranzo, Aperitivo, Cena</h2>
+          <p>Tre momenti diversi, un'unica firma: qualita selezionata, ospitalita sincera e il fascino senza tempo del centro medievale di Viterbo.</p>
+        </div>
+
+        <div class="souls-grid">
+          <article class="soul-card reveal" style="--delay: 0.05s;">
+            <img src="assets/img/ilcardinale.bistro_1736945393_3546077431468190672_66423693786.jpg" alt="Piatto di pasta della tradizione per il pranzo">
+            <div class="soul-content">
+              <h3>Pranzo</h3>
+              <p>Ricette viterbesi e laziali, porzioni generose e sapori netti: il pranzo giusto per chi cerca gusto autentico anche in pausa.</p>
+              <span class="soul-link">Scopri il menu pranzo</span>
+            </div>
+          </article>
+
+          <article class="soul-card reveal" style="--delay: 0.12s;">
+            <img src="assets/img/ilcardinale.bistro_1717266522_3380999101305211961_66423693786.jpg" alt="Aperitivo nel richiastro interno con spritz e taglieri">
+            <div class="soul-content">
+              <h3>Aperitivo</h3>
+              <p>Nel richiastro interno, tra pietra antica e luci calde, il tuo aperitivo diventa un rituale elegante e conviviale.</p>
+              <span class="soul-link">Scopri l'aperitivo</span>
+            </div>
+          </article>
+
+          <article class="soul-card reveal" style="--delay: 0.19s;">
+            <img src="assets/img/ilcardinale.bistro_1715975141_3370166208732641374_66423693786.jpg" alt="Calici di vino e sala interna per la cena">
+            <div class="soul-content">
+              <h3>Cena</h3>
+              <p>La sera si accende tra archi in pietra, vini selezionati e piatti che raccontano la tradizione in chiave contemporanea.</p>
+              <span class="soul-link">Scopri la cena</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section identity" id="storia">
+      <div class="container identity-grid">
+        <div class="identity-copy reveal">
+          <span class="eyebrow">Identita & Location</span>
+          <h2>Nel cuore medievale, con lo stile di un bistro contemporaneo</h2>
+          <p>In Via Cardinal Pietro La Fontaine 12, Il Cardinale Bistro vive dentro una cornice storica del 1200. Ogni dettaglio unisce pietra, legno e luce in un'atmosfera raffinata ma accogliente.</p>
+          <p>Dal pranzo alla cena, passando per l'aperitivo nel romantico richiastro interno, il locale offre un'esperienza pensata per chi ama la cucina della tradizione con cura e personalita.</p>
+          <ul class="identity-points">
+            <li>Posizione esclusiva nel centro storico di Viterbo.</li>
+            <li>Cucina viterbese e laziale, carni e vini selezionati.</li>
+            <li>Servizio cordiale e professionale in un ambiente unico.</li>
+          </ul>
+        </div>
+
+        <div class="identity-media reveal" style="--delay: 0.1s;">
+          <figure>
+            <img src="assets/img/ilcardinale.bistro_1716479565_3374397629991097294_66423693786.jpg" alt="Sala interna con archi in pietra e lampadari">
+          </figure>
+          <figure>
+            <img src="assets/img/ilcardinale.bistro_1717247230_3380837266308210311_66423693786.jpg" alt="Vicolo medievale vicino al ristorante nel centro di Viterbo">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Social Proof / Gallery</span>
+          <h2>Atmosfera che si vede, gusto che si ricorda</h2>
+          <p>Una selezione di scatti reali dal bistro: il racconto visivo di un locale apprezzato per accoglienza, autenticita e qualita.</p>
+        </div>
+
+        <div class="proof-grid">
+          <div class="proof-item reveal" style="--delay: 0.03s;">Atmosfera accogliente e romantica</div>
+          <div class="proof-item reveal" style="--delay: 0.08s;">Sapori autentici e porzioni generose</div>
+          <div class="proof-item reveal" style="--delay: 0.13s;">Servizio cordiale e attento</div>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card tall reveal" style="--delay: 0.03s;">
+            <img src="assets/img/ilcardinale.bistro_1717266522_3380999101305211961_66423693786.jpg" alt="Richiastro interno con aperitivo">
+          </figure>
+          <figure class="gallery-card reveal" style="--delay: 0.06s;">
+            <img src="assets/img/ilcardinale.bistro_1717266522_3380999101053484005_66423693786.jpg" alt="Tagliere di salumi selezionati">
+          </figure>
+          <figure class="gallery-card reveal" style="--delay: 0.09s;">
+            <img src="assets/img/ilcardinale.bistro_1716147724_3371613941544932533_66423693786.jpg" alt="Piatto di pasta alla carbonara">
+          </figure>
+          <figure class="gallery-card wide reveal" style="--delay: 0.12s;">
+            <img src="assets/img/ilcardinale.bistro_1715975141_3370166208732618421_66423693786.jpg" alt="Cena in sala con atmosfera conviviale">
+          </figure>
+          <figure class="gallery-card reveal" style="--delay: 0.15s;">
+            <img src="assets/img/ilcardinale.bistro_1716147724_3371613941570145532_66423693786.jpg" alt="Zuppa della tradizione laziale">
+          </figure>
+          <figure class="gallery-card reveal" style="--delay: 0.18s;">
+            <img src="assets/img/ilcardinale.bistro_1774711683_3862883292126826644_66423693786.jpg" alt="Lasagna gratinata della casa">
+          </figure>
+          <figure class="gallery-card reveal" style="--delay: 0.21s;">
+            <img src="assets/img/ilcardinale.bistro_1717266522_3380999101062009057_66423693786.jpg" alt="Spritz e specialita per aperitivo">
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contatti">
+    <div class="container footer-grid">
+      <article class="foot-card reveal">
+        <h3>Contatti Rapidi</h3>
+        <ul class="contact-list">
+          <li>Via Cardinal Pietro La Fontaine 12, 01100 Viterbo (VT)</li>
+          <li>Tel: <a href="tel:+393401197999">+39 340 119 7999</a></li>
+          <li>Email: <a href="mailto:stefaniafoglietta@yahoo.it">stefaniafoglietta@yahoo.it</a></li>
+          <li>Servizi: Pranzo, Cena, Bevande, Opzioni vegetariane</li>
+        </ul>
+      </article>
+
+      <article class="foot-card reveal" style="--delay: 0.08s;">
+        <h3>Orari</h3>
+        <table class="hours" aria-label="Orari di apertura">
+          <thead>
+            <tr>
+              <th>Giorno</th>
+              <th>Orario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Domenica</td><td>12:00-15:30 | 17:30-00:00</td></tr>
+            <tr><td>Lunedi</td><td>12:00-15:30 | 17:30-00:00</td></tr>
+            <tr><td>Martedi</td><td>12:00-15:30 | 17:30-00:00</td></tr>
+            <tr><td>Mercoledi</td><td>12:00-15:30 | 17:30-00:00</td></tr>
+            <tr><td>Giovedi</td><td>12:00-15:30 | 17:30-00:00</td></tr>
+            <tr><td>Venerdi</td><td>12:00-15:30 | 17:30-00:00</td></tr>
+            <tr><td>Sabato</td><td>12:00-15:30 | 17:30-00:00</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="foot-card reveal" style="--delay: 0.14s;">
+        <h3>Mappa</h3>
+        <p>Nel cuore del quartiere medievale di Viterbo, a pochi passi dai principali percorsi storici.</p>
+        <div class="map-wrap">
+          <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Via%20Cardinal%20Pietro%20La%20Fontaine%2012%2C%2001100%20Viterbo&output=embed" title="Mappa Il Cardinale Bistro"></iframe>
+        </div>
+        <a class="link-map" href="https://maps.google.com/?q=Via+Cardinal+Pietro+La+Fontaine+12,+Viterbo" target="_blank" rel="noopener noreferrer">Apri su Google Maps</a>
+      </article>
+    </div>
+
+    <div class="container footer-bottom">
+      Il Cardinale Bistro - Viterbo - Esperienza Italiana tra Storia e Gusto
+    </div>
+  </footer>
+
+  <script>
+    const topbar = document.querySelector(".topbar");
+    const onScroll = () => topbar.classList.toggle("scrolled", window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    reveals.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
