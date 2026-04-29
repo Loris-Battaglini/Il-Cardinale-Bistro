@@ -25,32 +25,20 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   position: relative;
   font-family: "Alegreya Sans", sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at 15% -8%, rgba(197, 143, 74, 0.24), transparent 30%),
-    radial-gradient(circle at 90% 90%, rgba(114, 136, 105, 0.12), transparent 28%),
-    linear-gradient(165deg, var(--surface) 0%, var(--surface-2) 100%);
+  background: #f3eadb;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.24;
-  background-image:
-    radial-gradient(rgba(126, 90, 53, 0.12) 0.8px, transparent 0.8px),
-    radial-gradient(rgba(255, 255, 255, 0.25) 0.6px, transparent 0.6px);
-  background-position: 0 0, 18px 14px;
-  background-size: 26px 26px;
-  z-index: -1;
+  content: none;
 }
 
 img {
@@ -75,6 +63,11 @@ section {
 .container {
   width: var(--container);
   margin-inline: auto;
+}
+
+main {
+  position: relative;
+  isolation: isolate;
 }
 
 .topbar {
@@ -319,34 +312,47 @@ section {
   position: relative;
   padding-block: clamp(4rem, 8vw, 6.8rem);
   isolation: isolate;
+  --corner-size: clamp(136px, 13.6vw, 214px);
+  --corner-side: clamp(-18px, -0.6vw, -6px);
+  --corner-top: clamp(16px, 2.1vw, 30px);
+  --corner-bottom: clamp(16px, 2.1vw, 30px);
 }
 
 .section::before,
 .section::after {
   content: "";
   position: absolute;
-  inset: clamp(14px, 2vw, 26px);
+  left: 0;
+  right: 0;
+  height: calc(var(--corner-size) + 64px);
   pointer-events: none;
-  opacity: 0.52;
   z-index: 0;
+  background-repeat: no-repeat;
+  background-size: var(--corner-size) var(--corner-size), var(--corner-size) var(--corner-size);
+  opacity: 0.3;
+  filter: saturate(0.88) contrast(0.94);
 }
 
 .section::before {
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23B8860B' stroke-opacity='0.48' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 48 C10 21 30 10 58 10'/%3E%3Cpath d='M10 10 C36 10 50 24 58 48'/%3E%3Cpath d='M23 58 C40 55 52 40 56 24'/%3E%3Cpath d='M58 10 C74 13 87 25 90 41 C73 41 61 48 54 60'/%3E%3Cpath d='M58 10 C64 26 70 33 86 36'/%3E%3Ccircle cx='58' cy='10' r='2.2' fill='%23B8860B' fill-opacity='0.42'/%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg transform='translate(120 0) scale(-1 1)' fill='none' stroke='%23B8860B' stroke-opacity='0.48' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 48 C10 21 30 10 58 10'/%3E%3Cpath d='M10 10 C36 10 50 24 58 48'/%3E%3Cpath d='M23 58 C40 55 52 40 56 24'/%3E%3Cpath d='M58 10 C74 13 87 25 90 41 C73 41 61 48 54 60'/%3E%3Cpath d='M58 10 C64 26 70 33 86 36'/%3E%3Ccircle cx='58' cy='10' r='2.2' fill='%23B8860B' fill-opacity='0.42'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: left top, right top;
-  background-size: clamp(84px, 8vw, 118px) clamp(84px, 8vw, 118px), clamp(84px, 8vw, 118px) clamp(84px, 8vw, 118px);
+  top: 0;
+  bottom: auto;
+  background-image:
+    url("assets/adobe/floral-corner-top-left-rot.png"),
+    url("assets/adobe/floral-corner-top-right-rot.png");
+  background-position:
+    left var(--corner-side) top var(--corner-top),
+    right var(--corner-side) top var(--corner-top);
 }
 
 .section::after {
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg transform='translate(0 120) scale(1 -1)' fill='none' stroke='%23B8860B' stroke-opacity='0.48' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 48 C10 21 30 10 58 10'/%3E%3Cpath d='M10 10 C36 10 50 24 58 48'/%3E%3Cpath d='M23 58 C40 55 52 40 56 24'/%3E%3Cpath d='M58 10 C74 13 87 25 90 41 C73 41 61 48 54 60'/%3E%3Cpath d='M58 10 C64 26 70 33 86 36'/%3E%3Ccircle cx='58' cy='10' r='2.2' fill='%23B8860B' fill-opacity='0.42'/%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg transform='translate(120 120) scale(-1 -1)' fill='none' stroke='%23B8860B' stroke-opacity='0.48' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 48 C10 21 30 10 58 10'/%3E%3Cpath d='M10 10 C36 10 50 24 58 48'/%3E%3Cpath d='M23 58 C40 55 52 40 56 24'/%3E%3Cpath d='M58 10 C74 13 87 25 90 41 C73 41 61 48 54 60'/%3E%3Cpath d='M58 10 C64 26 70 33 86 36'/%3E%3Ccircle cx='58' cy='10' r='2.2' fill='%23B8860B' fill-opacity='0.42'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: left bottom, right bottom;
-  background-size: clamp(84px, 8vw, 118px) clamp(84px, 8vw, 118px), clamp(84px, 8vw, 118px) clamp(84px, 8vw, 118px);
+  top: auto;
+  bottom: 0;
+  background-image:
+    url("assets/adobe/floral-corner-bottom-left-rot.png"),
+    url("assets/adobe/floral-corner-bottom-right-rot.png");
+  background-position:
+    left var(--corner-side) bottom var(--corner-bottom),
+    right var(--corner-side) bottom var(--corner-bottom);
 }
 
 .section > .container {
@@ -463,16 +469,24 @@ section {
 
 .identity {
   position: relative;
-  background: linear-gradient(180deg, #f7efe1 0%, #efe3cf 100%);
+  background: transparent;
   border-block: 1px solid rgba(53, 35, 21, 0.08);
 }
 
 .identity::before {
-  content: none;
+  top: 0;
+  bottom: auto;
+  background-position:
+    left var(--corner-side) top var(--corner-top),
+    right var(--corner-side) top var(--corner-top);
 }
 
 .identity::after {
-  content: none;
+  top: auto;
+  bottom: 0;
+  background-position:
+    left var(--corner-side) bottom var(--corner-bottom),
+    right var(--corner-side) bottom var(--corner-bottom);
 }
 
 .identity-grid {
@@ -965,11 +979,16 @@ section {
 }
 
 @media (max-width: 760px) {
+  .section {
+    --corner-size: clamp(94px, 28vw, 136px);
+    --corner-side: -9px;
+    --corner-top: 12px;
+    --corner-bottom: 12px;
+  }
+
   .section::before,
   .section::after {
-    inset: 10px;
-    opacity: 0.42;
-    background-size: 70px 70px, 70px 70px;
+    opacity: 0.2;
   }
 
   .identity-copy::before {
