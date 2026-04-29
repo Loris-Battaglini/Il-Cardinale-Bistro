@@ -979,6 +979,10 @@ main {
 }
 
 @media (max-width: 760px) {
+  .proof-grid {
+    display: none;
+  }
+
   .section {
     --corner-size: clamp(190px, 52vw, 300px);
     --corner-side: -9px;
