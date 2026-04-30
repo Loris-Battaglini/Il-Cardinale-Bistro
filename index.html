@@ -22,12 +22,11 @@
       </a>
       <div class="topbar-meta" aria-label="Contatti rapidi">
         <a class="topbar-phone" href="tel:+393401197999">+39 340 119 7999</a>
-        <span class="topbar-divider" aria-hidden="true">&bull;</span>
         <span class="topbar-address">Via Cardinal Pietro La Fontaine 12</span>
       </div>
       <div class="topbar-actions">
         <a class="btn btn-small" href="https://wa.me/393401197999" target="_blank" rel="noopener noreferrer">Prenota un Tavolo</a>
-        <a class="btn btn-small btn-topbar-call" href="tel:+393401197999">Chiamaci</a>
+        <a class="btn btn-small btn-ghost btn-topbar-call" href="tel:+393401197999">Chiamaci</a>
       </div>
     </div>
   </header>
@@ -96,9 +95,30 @@
           <p>In Via Cardinal Pietro La Fontaine 12, Il Cardinale Bistro vive dentro una cornice storica del 1200. Ogni dettaglio unisce pietra, legno e luce in un'atmosfera raffinata ma accogliente.</p>
           <p>Dal pranzo alla cena, passando per l'aperitivo nel romantico richiastro interno, il locale offre un'esperienza pensata per chi ama la cucina della tradizione con cura e personalit&agrave;.</p>
           <ul class="identity-points">
-            <li>Posizione esclusiva nel centro storico di Viterbo.</li>
-            <li>Cucina viterbese e laziale, carni e vini selezionati.</li>
-            <li>Servizio cordiale e professionale in un ambiente unico.</li>
+            <li>
+              <span class="identity-point-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M12 2a6 6 0 0 0-6 6c0 4.95 6 11 6 11s6-6.05 6-11a6 6 0 0 0-6-6Zm0 8.25a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z"></path>
+                </svg>
+              </span>
+              <span>Posizione esclusiva nel centro storico di Viterbo.</span>
+            </li>
+            <li>
+              <span class="identity-point-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M7 2v7a3 3 0 0 1-2 2.82V22h2V11.82A3 3 0 0 1 9 9V2H7Zm10 0a4 4 0 0 0-4 4v7h2V22h2V2Z"></path>
+                </svg>
+              </span>
+              <span>Cucina viterbese e laziale, carni e vini selezionati.</span>
+            </li>
+            <li>
+              <span class="identity-point-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="m12 2.8 2.36 4.78 5.28.77-3.82 3.73.9 5.27L12 14.88l-4.72 2.47.9-5.27L4.36 8.35l5.28-.77L12 2.8Z"></path>
+                </svg>
+              </span>
+              <span>Servizio cordiale e professionale in un ambiente unico.</span>
+            </li>
           </ul>
         </div>
 
@@ -122,9 +142,21 @@
         </div>
 
         <div class="proof-grid">
-          <div class="proof-item reveal" style="--delay: 0.03s;">Atmosfera accogliente e romantica</div>
-          <div class="proof-item reveal" style="--delay: 0.08s;">Sapori autentici e porzioni generose</div>
-          <div class="proof-item reveal" style="--delay: 0.13s;">Servizio cordiale e attento</div>
+          <article class="proof-item reveal" style="--delay: 0.03s;" data-typed="Atmosfera calda e romantica, con archi in pietra che rendono ogni tavolo speciale.">
+            <p class="proof-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="proof-quote"><span class="proof-typed"></span><span class="proof-caret" aria-hidden="true"></span></p>
+            <p class="proof-author">Ospite Tripadvisor</p>
+          </article>
+          <article class="proof-item reveal" style="--delay: 0.08s;" data-typed="Cucina autentica, porzioni generose e carta vini curata: qualit&agrave; percepita dal primo assaggio.">
+            <p class="proof-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="proof-quote"><span class="proof-typed"></span><span class="proof-caret" aria-hidden="true"></span></p>
+            <p class="proof-author">Ospite Google</p>
+          </article>
+          <article class="proof-item reveal" style="--delay: 0.13s;" data-typed="Staff cordiale e presente, con un ritmo di servizio perfetto tra pranzo, aperitivo e cena.">
+            <p class="proof-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="proof-quote"><span class="proof-typed"></span><span class="proof-caret" aria-hidden="true"></span></p>
+            <p class="proof-author">Ospite Verified</p>
+          </article>
         </div>
 
         <div class="gallery-carousel">
@@ -179,11 +211,11 @@
         </ul>
         <div class="social-links" aria-label="Social Il Cardinale Bistro">
           <a class="social-link" href="https://www.instagram.com/ilcardinale.bistro/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Il Cardinale Bistro">
-            <img src="assets/adobe/Instagram_Glyph_Gradient.png" alt="">
+            <img class="social-icon social-icon-ig" src="assets/adobe/Instagram_Glyph_Gradient.png" alt="">
             <span>Instagram</span>
           </a>
           <a class="social-link" href="https://www.facebook.com/p/IL-Cardinale-Bistrot-61559590307370/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Il Cardinale Bistro">
-            <img src="assets/adobe/icons8-facebook-96.png" alt="">
+            <img class="social-icon social-icon-fb" src="assets/adobe/icons8-facebook-96.png" alt="">
             <span>Facebook</span>
           </a>
         </div>
@@ -260,6 +292,54 @@
         }
         observer.observe(item);
       });
+    }
+
+    const proofItems = document.querySelectorAll(".proof-item[data-typed]");
+    const writeProofText = (card) => {
+      if (!card || card.dataset.typedDone === "true") {
+        return;
+      }
+      const quote = card.querySelector(".proof-typed");
+      const fullText = card.dataset.typed || "";
+      if (!quote || !fullText) {
+        return;
+      }
+      let cursor = 0;
+      card.dataset.typedDone = "true";
+      const tick = () => {
+        quote.textContent = fullText.slice(0, cursor);
+        cursor += 1;
+        if (cursor <= fullText.length) {
+          setTimeout(tick, 17);
+        } else {
+          card.classList.add("is-typed");
+        }
+      };
+      tick();
+    };
+
+    if (proofItems.length) {
+      if (prefersReducedMotion) {
+        proofItems.forEach((card) => {
+          const quote = card.querySelector(".proof-typed");
+          quote.textContent = card.dataset.typed || "";
+          card.classList.add("is-typed");
+        });
+      } else {
+        const proofObserver = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+            writeProofText(entry.target);
+            obs.unobserve(entry.target);
+          });
+        }, {
+          threshold: 0.35,
+          rootMargin: "0px 0px -8% 0px"
+        });
+        proofItems.forEach((card) => proofObserver.observe(card));
+      }
     }
 
     const mapWrap = document.querySelector(".map-wrap");
