@@ -215,7 +215,6 @@ main {
 .hero {
   position: relative;
   min-height: 100svh;
-  min-height: 100dvh;
   display: flex;
   align-items: flex-end;
   color: var(--white);
@@ -1008,7 +1007,6 @@ main {
   min-height: 220px;
   aspect-ratio: 16 / 10;
   background: linear-gradient(120deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
-  contain: layout paint;
 }
 
 .map-wrap iframe {
@@ -1060,7 +1058,6 @@ main {
   opacity: 0;
   transform: translate3d(0, 30px, 0) scale(0.985);
   filter: blur(5px);
-  will-change: transform, opacity, filter;
   transition:
     opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1109,6 +1106,10 @@ main {
 }
 
 @media (min-width: 900px) {
+  .hero {
+    min-height: 100dvh;
+  }
+
   html {
     font-size: 110%;
   }
@@ -1281,10 +1282,12 @@ main {
   }
 
   .topbar .btn-small:not(.btn-topbar-call) {
-    background: rgba(252, 243, 223, 0.1);
+    background: linear-gradient(120deg, #d3a25e, #b77b37);
     border: 1px solid rgba(151, 104, 54, 0.4);
-    color: #5b3d27;
-    box-shadow: none;
+    color: #271a12;
+    box-shadow:
+      0 8px 18px rgba(114, 70, 30, 0.26),
+      inset 0 1px 2px rgba(255, 255, 255, 0.28);
   }
 
   .btn-topbar-call {
@@ -1292,7 +1295,22 @@ main {
   }
 
   .proof-grid {
-    display: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.72rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .proof-item {
+    min-height: 0;
+    padding: 0.9rem 0.9rem 0.84rem;
+    gap: 0.4rem;
+  }
+
+  .proof-quote {
+    min-height: 0;
+    font-size: 0.93rem;
+    line-height: 1.45;
   }
 
   .section {
@@ -1333,6 +1351,68 @@ main {
 
   .identity-media::after {
     content: none;
+  }
+
+  .footer .container {
+    width: min(95vw, 680px);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 0.95rem;
+  }
+
+  .foot-card {
+    min-width: 0;
+    padding: 1.18rem;
+    overflow: hidden;
+  }
+
+  .foot-card * {
+    min-width: 0;
+  }
+
+  .contact-list li,
+  .tripadvisor-link,
+  .link-map,
+  .social-link,
+  .hours th,
+  .hours td {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .tripadvisor-link {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    line-height: 1.26;
+    white-space: normal;
+  }
+
+  .hours {
+    table-layout: fixed;
+  }
+
+  .hours th:first-child,
+  .hours td:first-child {
+    width: 37%;
+  }
+
+  .hours th:last-child,
+  .hours td:last-child {
+    text-align: right;
+    padding-left: 0.5rem;
+  }
+
+  .map-wrap {
+    min-height: 190px;
+  }
+
+  .social-icon-fb {
+    transform: none;
+    width: 1.72rem;
+    height: 1.72rem;
   }
 
 }

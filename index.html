@@ -263,9 +263,24 @@
 
   <script>
     const topbar = document.querySelector(".topbar");
-    const onScroll = () => topbar.classList.toggle("scrolled", window.scrollY > 10);
+    const onScroll = () => {
+      const shouldBeScrolled = window.scrollY > 24;
+      if (topbar.classList.contains("scrolled") !== shouldBeScrolled) {
+        topbar.classList.toggle("scrolled", shouldBeScrolled);
+      }
+    };
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    let scrollTicking = false;
+    window.addEventListener("scroll", () => {
+      if (scrollTicking) {
+        return;
+      }
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        onScroll();
+        scrollTicking = false;
+      });
+    }, { passive: true });
 
     const reveals = document.querySelectorAll(".reveal");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -356,7 +371,15 @@
       mapFrame.addEventListener("load", markMapLoaded, { once: true });
 
       let resizeTimer;
+      let lastViewportWidth = window.innerWidth;
       window.addEventListener("resize", () => {
+        const currentWidth = window.innerWidth;
+        // Skip mobile browser UI height-resize noise while scrolling.
+        if (Math.abs(currentWidth - lastViewportWidth) < 3) {
+          return;
+        }
+        lastViewportWidth = currentWidth;
+
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
           // Force a tiny repaint to avoid occasional iframe paint lag on resize.
@@ -383,6 +406,7 @@
       let isTransitioning = false;
       const totalSlides = slides.length;
       const loopEnabled = totalSlides > 1;
+      const prefersReducedMotionCarousel = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (!track || totalSlides === 0 || !prevBtn || !nextBtn) {
         console.warn('Carosello non inizializzato: elementi mancanti.');
@@ -462,15 +486,30 @@
         });
 
         updateCarousel();
-      
-        // Auto-rotate carousel every 5 seconds
-        setInterval(() => {
-          if (loopEnabled) {
-            goToSlide(currentIndex + 1);
-          } else {
-            goToSlide((currentIndex + 1) % totalSlides);
-          }
-        }, 5000);
+
+        // Auto-rotate only when useful/visible to reduce CPU/GPU load.
+        let carouselInView = true;
+        if ("IntersectionObserver" in window) {
+          const carouselObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              carouselInView = entry.isIntersecting;
+            });
+          }, { threshold: 0.2 });
+          carouselObserver.observe(carousel);
+        }
+
+        if (!prefersReducedMotionCarousel) {
+          setInterval(() => {
+            if (document.hidden || !carouselInView || isTransitioning) {
+              return;
+            }
+            if (loopEnabled) {
+              goToSlide(currentIndex + 1);
+            } else {
+              goToSlide((currentIndex + 1) % totalSlides);
+            }
+          }, 5000);
+        }
       }
     }
   </script>
