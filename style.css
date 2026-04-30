@@ -1109,10 +1109,22 @@ main {
 }
 
 @media (min-width: 900px) {
+  html {
+    font-size: 110%;
+  }
+
+  :root {
+    --container: min(1220px, 94vw);
+  }
+
+  .section {
+    padding-block: clamp(3.4rem, 6.6vw, 5.9rem);
+  }
+
   .topbar {
     inset: 1.2rem auto auto 50%;
     transform: translateX(-50%);
-    width: min(1080px, calc(100vw - 2rem));
+    width: min(1160px, calc(100vw - 1.4rem));
   }
 
   .topbar.scrolled {
@@ -1323,6 +1335,31 @@ main {
     content: none;
   }
 
+}
+
+@media (min-width: 761px) and (max-width: 899px) {
+  .hero {
+    padding: clamp(6.6rem, 12vw, 7.9rem) 0 3.9rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.2rem, 9.4vw, 4.9rem);
+    line-height: 0.93;
+    max-width: 13.8ch;
+    margin-bottom: 1.05rem;
+  }
+
+  .hero .lead {
+    font-size: clamp(1.09rem, 2.9vw, 1.28rem);
+    line-height: 1.54;
+    max-width: 43ch;
+  }
+
+  .hero .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    padding: 0.46rem 0.94rem;
+  }
 }
 
 
