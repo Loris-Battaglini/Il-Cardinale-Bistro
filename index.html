@@ -216,7 +216,11 @@
             <span>Instagram</span>
           </a>
           <a class="social-link" href="https://www.facebook.com/p/IL-Cardinale-Bistrot-61559590307370/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Il Cardinale Bistro">
-            <img class="social-icon social-icon-fb" src="assets/adobe/icons8-facebook-96.png" alt="">
+            <span class="social-icon-fb-svg" aria-hidden="true">
+              <svg viewBox="0 0 320 512" focusable="false">
+                <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path>
+              </svg>
+            </span>
             <span>Facebook</span>
           </a>
         </div>
@@ -298,13 +302,13 @@
           obs.unobserve(entry.target);
         });
       }, {
-        threshold: 0.12,
-        rootMargin: "0px 0px -10% 0px"
+        threshold: 0.08,
+        rootMargin: "0px 0px -4% 0px"
       });
 
       reveals.forEach((item, index) => {
         if (!item.style.getPropertyValue("--delay")) {
-          item.style.setProperty("--delay", `${Math.min(index * 0.035, 0.22)}s`);
+          item.style.setProperty("--delay", `${Math.min(index * 0.02, 0.12)}s`);
         }
         observer.observe(item);
       });
@@ -326,7 +330,7 @@
         quote.textContent = fullText.slice(0, cursor);
         cursor += 1;
         if (cursor <= fullText.length) {
-          setTimeout(tick, 17);
+          setTimeout(tick, 34);
         } else {
           card.classList.add("is-typed");
         }
@@ -351,8 +355,8 @@
             obs.unobserve(entry.target);
           });
         }, {
-          threshold: 0.35,
-          rootMargin: "0px 0px -8% 0px"
+          threshold: 0.18,
+          rootMargin: "0px 0px -2% 0px"
         });
         proofItems.forEach((card) => proofObserver.observe(card));
       }

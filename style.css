@@ -945,11 +945,22 @@ main {
   flex-shrink: 0;
 }
 
-.social-icon-fb {
-  width: 2.1rem;
-  height: 2.1rem;
-  transform: scale(1.22);
-  transform-origin: center;
+.social-icon-fb-svg {
+  width: 1.16rem;
+  height: 1.16rem;
+  border-radius: 0.4rem;
+  background: #1877f2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.social-icon-fb-svg svg {
+  width: 44%;
+  height: 72%;
+  fill: #ffffff;
+  display: block;
 }
 
 .tripadvisor-box {
@@ -1056,12 +1067,12 @@ main {
 
 .reveal {
   opacity: 0;
-  transform: translate3d(0, 30px, 0) scale(0.985);
-  filter: blur(5px);
+  transform: translate3d(0, 18px, 0) scale(0.992);
+  filter: blur(2.5px);
   transition:
-    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.85s ease;
+    opacity 0.52s ease-out,
+    transform 0.52s ease-out,
+    filter 0.46s ease-out;
   transition-delay: var(--delay, 0s);
 }
 
@@ -1409,10 +1420,9 @@ main {
     min-height: 190px;
   }
 
-  .social-icon-fb {
-    transform: none;
-    width: 1.72rem;
-    height: 1.72rem;
+  .social-icon-fb-svg {
+    width: 1.16rem;
+    height: 1.16rem;
   }
 
 }
