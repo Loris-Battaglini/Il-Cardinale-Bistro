@@ -6,12 +6,10 @@
   <title>Il Cardinale Bistro | Viterbo</title>
   <meta name="description" content="Il Cardinale Bistro: trattoria d'eccellenza nel cuore medievale di Viterbo. Pranzo, aperitivo e cena tra storia, gusto e atmosfera.">
   <link rel="icon" type="image/jpeg" href="assets/favicon/474930305_541932845529448_6785295174995164938_n.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.google.com">
   <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="assets/img/hero-1920.jpg" imagesrcset="assets/img/hero-960.jpg 960w, assets/img/hero-1920.jpg 1920w" imagesizes="100vw" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/fonts/local-fonts.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -269,14 +267,14 @@
   <script>
     const topbar = document.querySelector(".topbar");
     const onScroll = () => {
-      const shouldBeScrolled = window.scrollY > 24;
+      const shouldBeScrolled = globalThis.scrollY > 24;
       if (topbar.classList.contains("scrolled") !== shouldBeScrolled) {
         topbar.classList.toggle("scrolled", shouldBeScrolled);
       }
     };
     onScroll();
     let scrollTicking = false;
-    window.addEventListener("scroll", () => {
+    globalThis.addEventListener("scroll", () => {
       if (scrollTicking) {
         return;
       }
@@ -288,7 +286,7 @@
     }, { passive: true });
 
     const reveals = document.querySelectorAll(".reveal");
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReducedMotion = globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) {
       reveals.forEach((item) => item.classList.add("is-visible"));
     } else {
@@ -376,9 +374,9 @@
       mapFrame.addEventListener("load", markMapLoaded, { once: true });
 
       let resizeTimer;
-      let lastViewportWidth = window.innerWidth;
-      window.addEventListener("resize", () => {
-        const currentWidth = window.innerWidth;
+      let lastViewportWidth = globalThis.innerWidth;
+      globalThis.addEventListener("resize", () => {
+        const currentWidth = globalThis.innerWidth;
         // Skip mobile browser UI height-resize noise while scrolling.
         if (Math.abs(currentWidth - lastViewportWidth) < 3) {
           return;
@@ -411,7 +409,7 @@
       let isTransitioning = false;
       const totalSlides = slides.length;
       const loopEnabled = totalSlides > 1;
-      const prefersReducedMotionCarousel = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const prefersReducedMotionCarousel = globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (!track || totalSlides === 0 || !prevBtn || !nextBtn) {
         console.warn('Carosello non inizializzato: elementi mancanti.');
@@ -484,7 +482,7 @@
             setTransition(false);
             currentIndex = 0;
             updateCarousel();
-            track.offsetHeight;
+            void track.offsetHeight;
             setTransition(true);
           }
           isTransitioning = false;
@@ -494,7 +492,7 @@
 
         // Auto-rotate only when useful/visible to reduce CPU/GPU load.
         let carouselInView = true;
-        if ("IntersectionObserver" in window) {
+        if ("IntersectionObserver" in globalThis) {
           const carouselObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
               carouselInView = entry.isIntersecting;
